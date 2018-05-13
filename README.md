@@ -1,10 +1,10 @@
 # OrderSample Application
 ### Installation
 
-	### Prerequisites
-		- Java 8
-		- Maven 
-		- Docker
+### Prerequisites
+	- Java 8
+	- Maven 
+	- Docker
 		
 - Configure DOCKER_HOST_IP variable [see](http://eventuate.io/docs/usingdocker.html).
 - Eventuate Diagnostic [see](https://github.com/eventuate-local-docker-images/eventuateio-docker-networking-diagnostics).
