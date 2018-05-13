@@ -2,12 +2,8 @@ package org.ordersample.orderviewservice.messaging;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.ordersample.orderviewservice.impl.CustomerServiceImpl;
-import org.ordersample.orderviewservice.impl.InvoiceServiceImpl;
-import org.ordersample.orderviewservice.impl.OrderServiceImpl;
-import org.ordersample.orderviewservice.model.Customer;
-import org.ordersample.orderviewservice.model.Invoice;
-import org.ordersample.orderviewservice.model.Order;
+import org.ordersample.orderviewservice.impl.*;
+import org.ordersample.orderviewservice.model.*;
 import org.ordersample.servicemodel.order.api.events.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

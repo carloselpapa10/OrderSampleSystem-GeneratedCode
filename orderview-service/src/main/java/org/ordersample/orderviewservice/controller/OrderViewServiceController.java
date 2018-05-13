@@ -3,7 +3,6 @@ package org.ordersample.orderviewservice.controller;
 import org.ordersample.orderviewservice.impl.*;
 import org.ordersample.orderviewservice.model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import org.slf4j.Logger;
