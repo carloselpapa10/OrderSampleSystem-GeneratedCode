@@ -22,39 +22,34 @@ public class OrderServiceController {
 	public CreateOrderResponse createOrder(@RequestBody CreateOrderRequest createOrderRequest){
 		log.info("createOrder(@RequestBody CreateOrderRequest createOrderRequest) - OrderServiceController - OrderService");
 		
-		Order order =orderServiceImpl.createOrder(new Order(createOrderRequest.getDescription(), createOrderRequest.getCustomerid()));
-		return new CreateOrderResponse(order.getId());
+		/*TODO*/
+		return new CreateOrderResponse();
 	}
 			
 	@GetMapping("/retrieve/{orderId}")
 	public Order findOrder(@RequestParam String id){
-		log.info("findOrder(String id) - OrderServiceController - OrderService");		
-		return orderServiceImpl.findOrder(id);
+		log.info("findOrder(String id) - OrderServiceController - OrderService");
+		
+		/*TODO*/
+		return null;
 	} 			
 
 	@PutMapping("/update/order")
 	public ResponseEntity<Order> updateOrder(@RequestBody Order order){
 		log.info("updateOrder(@RequestBody Order order) - OrderServiceController - OrderService");
 
-		if(orderServiceImpl.findOrder(order.getId()) != null) {
-			orderServiceImpl.updateOrder(order);
-			return ResponseEntity.ok(order);
-		}
+		/*TODO*/
 		return null;
 	}
-	
+ 			
 	@DeleteMapping("/delete/{orderId}")
 	public String deleteOrder(@RequestParam String id){
 		log.info("deleteOrder(String id) - OrderServiceController - OrderService");
-		
-		if(orderServiceImpl.findOrder(id) != null) {
-			orderServiceImpl.deleteOrder(orderServiceImpl.findOrder(id));
-			return "Order "+id+" is being deleted...";
-		}
+
+		/*TODO*/
 		return null;
-		
-	}
- 			
+	} 
+			
 	@GetMapping("/retrieve/Orders")
 	public List<Order> findAllOrders(){
 		/*Auto-Generated*/

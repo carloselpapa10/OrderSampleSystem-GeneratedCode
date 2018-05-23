@@ -9,6 +9,11 @@ import io.eventuate.tram.messaging.consumer.MessageConsumer;
 public class EventHandlersConfiguration {
 
 	@Bean
+	public DomainEventDispatcher invoiceHistoryDomainEventDispatcher(InvoiceHistoryEventHandlers invoiceHistoryEventHandlers, MessageConsumer messageConsumer) {
+		return new DomainEventDispatcher("invoiceHistoryDomainEventDispatcher", invoiceHistoryEventHandlers.domainEventHandlers(), messageConsumer);
+	}			
+
+	@Bean
 	public DomainEventDispatcher orderHistoryDomainEventDispatcher(OrderHistoryEventHandlers orderHistoryEventHandlers, MessageConsumer messageConsumer) {
 		return new DomainEventDispatcher("orderHistoryDomainEventDispatcher", orderHistoryEventHandlers.domainEventHandlers(), messageConsumer);
 	}			
@@ -16,11 +21,6 @@ public class EventHandlersConfiguration {
 	@Bean
 	public DomainEventDispatcher customerHistoryDomainEventDispatcher(CustomerHistoryEventHandlers customerHistoryEventHandlers, MessageConsumer messageConsumer) {
 		return new DomainEventDispatcher("customerHistoryDomainEventDispatcher", customerHistoryEventHandlers.domainEventHandlers(), messageConsumer);
-	}			
-
-	@Bean
-	public DomainEventDispatcher invoiceHistoryDomainEventDispatcher(InvoiceHistoryEventHandlers invoiceHistoryEventHandlers, MessageConsumer messageConsumer) {
-		return new DomainEventDispatcher("invoiceHistoryDomainEventDispatcher", invoiceHistoryEventHandlers.domainEventHandlers(), messageConsumer);
 	}			
 
 }			

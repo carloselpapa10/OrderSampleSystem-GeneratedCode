@@ -11,11 +11,11 @@ import org.ordersample.servicemodel.invoice.api.info.*;
 @Component
 public class InvoiceServiceProxy {
 
-	public final CommandEndpoint<RequestInvoiceCommand> requestInvoiceCommand = CommandEndpointBuilder
-								.forCommand(RequestInvoiceCommand.class)
+	public final CommandEndpoint<ValidateInvoiceByOrderService> validateInvoiceByOrderService = CommandEndpointBuilder
+								.forCommand(ValidateInvoiceByOrderService.class)
 								.withChannel(Channels.INVOICESERVICE)
-								.withReply(InvoiceInfo.class)
-								.build();								
+								.withReply(Success.class)
+								.build();			
 
 	public final CommandEndpoint<CompensateInvoiceCommand> compensateInvoiceCommand = CommandEndpointBuilder
 								.forCommand(CompensateInvoiceCommand.class)
@@ -23,10 +23,10 @@ public class InvoiceServiceProxy {
 								.withReply(Success.class)
 								.build();			
 
-	public final CommandEndpoint<ValidateInvoiceByOrderService> validateInvoiceByOrderService = CommandEndpointBuilder
-								.forCommand(ValidateInvoiceByOrderService.class)
+	public final CommandEndpoint<RequestInvoiceCommand> requestInvoiceCommand = CommandEndpointBuilder
+								.forCommand(RequestInvoiceCommand.class)
 								.withChannel(Channels.INVOICESERVICE)
-								.withReply(Success.class)
-								.build();			
+								.withReply(InvoiceInfo.class)
+								.build();								
 
 }					

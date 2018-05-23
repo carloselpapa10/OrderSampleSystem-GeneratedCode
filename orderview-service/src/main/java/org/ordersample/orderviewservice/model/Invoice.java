@@ -12,13 +12,6 @@ public class Invoice{
     private String invoicecomment;									
 
 	public Invoice() {}
-	
-	public Invoice(String id, String orderid, String invoicecomment) {
-		super();
-		this.id = id;
-		this.orderid = orderid;
-		this.invoicecomment = invoicecomment;
-	}
 
 	public void setId(String id) {
 		this.id = id;

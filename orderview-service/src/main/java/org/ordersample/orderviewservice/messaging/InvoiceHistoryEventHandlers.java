@@ -1,10 +1,9 @@
 package org.ordersample.orderviewservice.messaging;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.ordersample.orderviewservice.impl.InvoiceServiceImpl;
-import org.ordersample.orderviewservice.model.Invoice;
 import org.ordersample.servicemodel.invoice.api.events.*;
+import org.ordersample.orderviewservice.impl.*;
+import org.ordersample.orderviewservice.model.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import io.eventuate.tram.events.subscriber.DomainEventEnvelope;
@@ -16,9 +15,6 @@ public class InvoiceHistoryEventHandlers {
 	
 	private static final Logger log = LoggerFactory.getLogger(InvoiceHistoryEventHandlers.class);
 
-	@Autowired
-	private InvoiceServiceImpl invoiceServiceImpl;
-	
 	public DomainEventHandlers domainEventHandlers() {
 		return DomainEventHandlersBuilder
 				.forAggregateType("org.ordersample.invoiceservice.model.Invoice")
@@ -28,13 +24,11 @@ public class InvoiceHistoryEventHandlers {
 	}
 
 	private void handleInvoiceCreatedEvent(DomainEventEnvelope<InvoiceCreatedEvent> dee) {
-		log.info("handleInvoiceCreatedEvent() - InvoiceHistoryEventHandlers - InvoiceService");		
-		invoiceServiceImpl.createInvoice(new Invoice(dee.getAggregateId(), dee.getEvent().getInvoiceInfo().getOrderid(), dee.getEvent().getInvoiceInfo().getInvoicecomment()));
+		log.info("handleInvoiceCreatedEvent() - InvoiceHistoryEventHandlers - InvoiceService");
 	}
 
 	private void handleInvoiceCreationFailedEvent(DomainEventEnvelope<InvoiceCreationFailedEvent> dee) {
 		log.info("handleInvoiceCreationFailedEvent() - InvoiceHistoryEventHandlers - InvoiceService");
-		invoiceServiceImpl.rejectInvoice(dee.getAggregateId());
 	}
 
 }

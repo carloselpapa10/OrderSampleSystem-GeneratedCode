@@ -42,14 +42,13 @@ public class OrderServiceImpl implements OrderService{
 		// TODO Auto-generated method stub
 		log.info("createOrder(Order order) - OrderServiceImpl - OrderService");
 		
-		order = orderRepository.save(order);
-		
-		List<OrderDomainEvent> events = singletonList(new OrderCreatedEvent(new OrderInfo(order.getId(), order.getDescription(), order.getCustomerId(), order.getInvoiceId())));
+		List<OrderDomainEvent> events = singletonList(new OrderCreatedEvent());
 		ResultWithDomainEvents<Order, OrderDomainEvent> orderAndEvents = new ResultWithDomainEvents<>(order, events);		
 		
+		order = orderRepository.save(order);
 		orderAggregateEventPublisher.publish(order, orderAndEvents.events);
 
-		CreateOrderSagaData data = new CreateOrderSagaData(order.getId(), order.getCustomerId(), order.getInvoiceId());
+		CreateOrderSagaData data = new CreateOrderSagaData();
 		createOrderSagaManager.create(data, Order.class, order.getId());
 		
 		return order;
@@ -59,7 +58,7 @@ public class OrderServiceImpl implements OrderService{
 	public Order findOrder(String id) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("findOrder(String id) - OrderServiceImpl - OrderService");
-		return orderRepository.findOne(id);
+		return null;
 	}
 			
 	@Override
@@ -67,9 +66,7 @@ public class OrderServiceImpl implements OrderService{
 		// TODO Auto-generated method stub
 		log.info("updateOrder(Order order) - OrderServiceImpl - OrderService");
 
-		order = orderRepository.save(order);
-		
-		UpdateOrderSagaData data = new UpdateOrderSagaData(order.getId(), order.getDescription(), order.getCustomerId(), order.getInvoiceId());
+		UpdateOrderSagaData data = new UpdateOrderSagaData();
 		updateOrderSagaManager.create(data);
 		
 	}
@@ -79,12 +76,10 @@ public class OrderServiceImpl implements OrderService{
 		// TODO Auto-generated method stub
 		log.info("rejectOrder(Order order) - OrderServiceImpl - OrderService");
 		
-		order.setCompleted(false);
-		order = orderRepository.save(order);
-		
-		List<OrderDomainEvent> events = singletonList(new OrderRejectedEvent(new OrderInfo(order.getId(), order.getDescription(), order.getCustomerId(), order.getInvoiceId())));
+		List<OrderDomainEvent> events = singletonList(new OrderRejectedEvent());
 		ResultWithDomainEvents<Order, OrderDomainEvent> orderAndEvents = new ResultWithDomainEvents<>(order, events);
 		
+		orderRepository.delete(order);
 		orderAggregateEventPublisher.publish(order, orderAndEvents.events);
 		
 	}
@@ -93,11 +88,8 @@ public class OrderServiceImpl implements OrderService{
 	public void completeOrder(Order order) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("completeOrder(Order order) - OrderServiceImpl - OrderService");
-		
-		order.setCompleted(true);
-		order = orderRepository.save(order);
 
-		List<OrderDomainEvent> events = singletonList(new OrderCompletedEvent(new OrderInfo(order.getId(), order.getDescription(), order.getCustomerId(), order.getInvoiceId())));
+		List<OrderDomainEvent> events = singletonList(new OrderCompletedEvent());
 		ResultWithDomainEvents<Order, OrderDomainEvent> orderAndEvents = new ResultWithDomainEvents<>(order, events);		
 		orderAggregateEventPublisher.publish(order, orderAndEvents.events);
 
@@ -107,10 +99,32 @@ public class OrderServiceImpl implements OrderService{
 	public void editOrder(Order order) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("editOrder(Order order) - OrderServiceImpl - OrderService");
-		
-		order = orderRepository.save(order);
 
-		List<OrderDomainEvent> events = singletonList(new OrderEditedEvent(new OrderInfo(order.getId(), order.getDescription(), order.getCustomerId(), order.getInvoiceId())));
+		List<OrderDomainEvent> events = singletonList(new OrderEditedEvent());
+		ResultWithDomainEvents<Order, OrderDomainEvent> orderAndEvents = new ResultWithDomainEvents<>(order, events);		
+		orderAggregateEventPublisher.publish(order, orderAndEvents.events);
+
+	}
+			
+	@Override
+	public void deleteOrder(Order order) throws BusinessException{
+		// TODO Auto-generated method stub
+		log.info("deleteOrder(Order order) - OrderServiceImpl - OrderService");
+		
+		List<OrderDomainEvent> events = singletonList(new OrderDeletedEvent());
+		ResultWithDomainEvents<Order, OrderDomainEvent> orderAndEvents = new ResultWithDomainEvents<>(order, events);
+		
+		orderRepository.delete(order);
+		orderAggregateEventPublisher.publish(order, orderAndEvents.events);
+		
+	}
+			
+	@Override
+	public void updateInvoiceOrder(Order order) throws BusinessException{
+		// TODO Auto-generated method stub
+		log.info("updateInvoiceOrder(Order order) - OrderServiceImpl - OrderService");
+
+		List<OrderDomainEvent> events = singletonList(new OrderUpdatedInvoiceEvent());
 		ResultWithDomainEvents<Order, OrderDomainEvent> orderAndEvents = new ResultWithDomainEvents<>(order, events);		
 		orderAggregateEventPublisher.publish(order, orderAndEvents.events);
 
@@ -120,32 +134,6 @@ public class OrderServiceImpl implements OrderService{
 	public List<Order> findAll() throws BusinessException{
 		log.info("findAll() - OrderServiceImpl - OrderService");
 		return orderRepository.findAll();
-	}
-
-	@Override
-	public void updateInvoiceOrder(String orderId, String invoiceId) throws BusinessException {
-		// TODO Auto-generated method stub
-		log.info("updateInvoiceOrder() - OrderServiceImpl - OrderService");
-		
-		Order order = orderRepository.findOne(orderId);
-		order.setInvoiceId(invoiceId);
-		order = orderRepository.save(order);
-		
-		List<OrderDomainEvent> events = singletonList(new OrderUpdatedInvoiceEvent(new OrderInfo(order.getId(), order.getDescription(), order.getCustomerId(), order.getInvoiceId())));
-		ResultWithDomainEvents<Order, OrderDomainEvent> orderAndEvents = new ResultWithDomainEvents<>(order, events);
-		orderAggregateEventPublisher.publish(order, orderAndEvents.events);
-	}
-
-	@Override
-	public void deleteOrder(Order order) throws BusinessException {
-		// TODO Auto-generated method stub
-		log.info("updateInvoiceOrder() - OrderServiceImpl - OrderService");
-		
-		List<OrderDomainEvent> events = singletonList(new OrderDeletedEvent(new OrderInfo(order.getId(), "", "", "")));
-		ResultWithDomainEvents<Order, OrderDomainEvent> orderAndEvents = new ResultWithDomainEvents<>(order, events);
-		
-		orderRepository.delete(order);
-		orderAggregateEventPublisher.publish(order, orderAndEvents.events);
 	}
 	
 }

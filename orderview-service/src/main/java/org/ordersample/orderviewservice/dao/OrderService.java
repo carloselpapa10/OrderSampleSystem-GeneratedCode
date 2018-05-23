@@ -12,7 +12,8 @@ public interface OrderService {
 	public void rejectOrder(String id) throws BusinessException;			
 	public void completeOrder(Order order) throws BusinessException;			
 	public void editOrder(Order order) throws BusinessException;			
+	public void deleteOrder(String id) throws BusinessException;			
+	public void updateInvoiceOrder(Order order) throws BusinessException;			
 	public List<Order> findAll() throws BusinessException;
-	public void updateInvoiceOrder(Order order, Invoice invoice) throws BusinessException;
-	public void deleteOrder(Order order) throws BusinessException;
+
 }	

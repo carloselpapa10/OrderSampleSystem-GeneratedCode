@@ -1,13 +1,13 @@
 package org.ordersample.servicemodel.order.api.events;
 
-import org.ordersample.servicemodel.order.api.info.OrderInfo;
+import org.ordersample.servicemodel.order.api.info.*;
 
 public class OrderDeletedEvent implements OrderDomainEvent{
-
+	
 	private OrderInfo orderInfo;
 
 	public OrderDeletedEvent() {}
-	
+
 	public OrderDeletedEvent(OrderInfo orderInfo) {
 		super();
 		this.orderInfo = orderInfo;
@@ -20,5 +20,5 @@ public class OrderDeletedEvent implements OrderDomainEvent{
 	public void setOrderInfo(OrderInfo orderInfo) {
 		this.orderInfo = orderInfo;
 	}
-	
+
 }

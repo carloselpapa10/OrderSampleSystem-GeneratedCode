@@ -1,11 +1,11 @@
 package org.ordersample.servicemodel.customer.api.events;
 
-import org.ordersample.servicemodel.customer.api.info.CustomerInfo;
+import org.ordersample.servicemodel.customer.api.info.*;
 
 public class CustomerUpdatedEvent implements CustomerDomainEvent{
-
-	CustomerInfo customerInfo; 
 	
+	private CustomerInfo customerInfo;
+
 	public CustomerUpdatedEvent() {}
 
 	public CustomerUpdatedEvent(CustomerInfo customerInfo) {
@@ -20,5 +20,5 @@ public class CustomerUpdatedEvent implements CustomerDomainEvent{
 	public void setCustomerInfo(CustomerInfo customerInfo) {
 		this.customerInfo = customerInfo;
 	}
-	
+
 }

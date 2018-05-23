@@ -17,14 +17,14 @@ public class OrderServiceProxy {
 								.withReply(Success.class)
 								.build();			
 
-	public final CommandEndpoint<EditOrderCommand> editOrderCommand = CommandEndpointBuilder
-								.forCommand(EditOrderCommand.class)
+	public final CommandEndpoint<CompleteOrderCommand> completeOrderCommand = CommandEndpointBuilder
+								.forCommand(CompleteOrderCommand.class)
 								.withChannel(Channels.ORDERSERVICE)
 								.withReply(Success.class)
 								.build();			
 
-	public final CommandEndpoint<CompleteOrderCommand> completeOrderCommand = CommandEndpointBuilder
-								.forCommand(CompleteOrderCommand.class)
+	public final CommandEndpoint<EditOrderCommand> editOrderCommand = CommandEndpointBuilder
+								.forCommand(EditOrderCommand.class)
 								.withChannel(Channels.ORDERSERVICE)
 								.withReply(Success.class)
 								.build();			

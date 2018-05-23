@@ -20,8 +20,10 @@ public class InvoiceServiceController {
 
 	@GetMapping("/retrieve/{invoiceId}")
 	public Invoice findInvoice(@RequestParam String id){
-		log.info("findInvoice(String id) - InvoiceServiceController - InvoiceService");		
-		return invoiceServiceImpl.findInvoice(id);
+		log.info("findInvoice(String id) - InvoiceServiceController - InvoiceService");
+		
+		/*TODO*/
+		return null;
 	} 			
 
 	@GetMapping("/retrieve/Invoices")

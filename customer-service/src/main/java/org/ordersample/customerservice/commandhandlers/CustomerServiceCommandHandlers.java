@@ -35,12 +35,8 @@ public class CustomerServiceCommandHandlers {
 		log.info("handleValidateCustomerByOrderService() - CustomerServiceCommandHandlers - CustomerService");
 		
 		ValidateCustomerByOrderService command = cm.getCommand();
-		
-		if(customerServiceImpl.findCustomer(command.getCustomerInfo().getId()) != null) {
-			return withSuccess();
-		}else {
-			return withFailure();
-		}		
+		/*TODO*/
+		return withSuccess();
 	}
 
 }

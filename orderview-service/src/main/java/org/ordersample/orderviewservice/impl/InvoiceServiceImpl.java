@@ -30,21 +30,20 @@ public class InvoiceServiceImpl implements InvoiceService{
 	public Invoice createInvoice(Invoice invoice) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("createInvoice(Invoice invoice) - InvoiceServiceImpl - OrderViewService");
-		return invoiceRepository.save(invoice);
+		return invoice;
 	}
 				
 	@Override
 	public void rejectInvoice(String id) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("rejectInvoice(String id) - InvoiceServiceImpl - OrderViewService");
-		invoiceRepository.delete(findInvoice(id));
 	}
 			
 	@Override
 	public Invoice findInvoice(String id) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("findInvoice(String id) - InvoiceServiceImpl - OrderViewService");
-		return invoiceRepository.findOne(id);
+		return null;
 	}
 			
 	@Override

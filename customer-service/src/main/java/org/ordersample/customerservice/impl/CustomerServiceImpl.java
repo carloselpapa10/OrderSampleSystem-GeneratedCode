@@ -32,8 +32,8 @@ public class CustomerServiceImpl implements CustomerService{
 	public Customer createCustomer(Customer customer) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("createCustomer(Customer customer) - CustomerServiceImpl - CustomerService");
-				
-		List<CustomerDomainEvent> events = singletonList(new CustomerCreatedEvent(new CustomerInfo(customer.getId(), customer.getName())));
+		
+		List<CustomerDomainEvent> events = singletonList(new CustomerCreatedEvent());
 		ResultWithDomainEvents<Customer, CustomerDomainEvent> customerAndEvents = new ResultWithDomainEvents<>(customer, events);		
 		
 		customer = customerRepository.save(customer);
@@ -46,19 +46,18 @@ public class CustomerServiceImpl implements CustomerService{
 	public Customer findCustomer(String id) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("findCustomer(String id) - CustomerServiceImpl - CustomerService");
-		return customerRepository.findOne(id);
+		return null;
 	}
 			
 	@Override
 	public void updateCustomer(Customer customer) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("updateCustomer(Customer customer) - CustomerServiceImpl - CustomerService");
-				
-		List<CustomerDomainEvent> events = singletonList(new CustomerUpdatedEvent(new CustomerInfo(customer.getId(), customer.getName())));
-		ResultWithDomainEvents<Customer, CustomerDomainEvent> customerAndEvents = new ResultWithDomainEvents<>(customer, events);
-		
-		customer = customerRepository.save(customer);
+
+		List<CustomerDomainEvent> events = singletonList(new CustomerUpdatedEvent());
+		ResultWithDomainEvents<Customer, CustomerDomainEvent> customerAndEvents = new ResultWithDomainEvents<>(customer, events);		
 		customerAggregateEventPublisher.publish(customer, customerAndEvents.events);
+
 	}
 			
 	@Override
@@ -66,7 +65,7 @@ public class CustomerServiceImpl implements CustomerService{
 		// TODO Auto-generated method stub
 		log.info("deleteCustomer(Customer customer) - CustomerServiceImpl - CustomerService");
 		
-		List<CustomerDomainEvent> events = singletonList(new CustomerDeletedEvent(new CustomerInfo(customer.getId())));
+		List<CustomerDomainEvent> events = singletonList(new CustomerDeletedEvent());
 		ResultWithDomainEvents<Customer, CustomerDomainEvent> customerAndEvents = new ResultWithDomainEvents<>(customer, events);
 		
 		customerRepository.delete(customer);

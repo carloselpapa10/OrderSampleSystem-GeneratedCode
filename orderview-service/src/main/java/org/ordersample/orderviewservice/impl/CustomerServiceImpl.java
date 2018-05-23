@@ -30,29 +30,26 @@ public class CustomerServiceImpl implements CustomerService{
 	public Customer createCustomer(Customer customer) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("createCustomer(Customer customer) - CustomerServiceImpl - OrderViewService");
-		return customerRepository.save(customer);
+		return customer;
 	}
 				
 	@Override
 	public Customer findCustomer(String id) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("findCustomer(String id) - CustomerServiceImpl - OrderViewService");
-		return customerRepository.findOne(id);
+		return null;
 	}
 			
 	@Override
 	public void updateCustomer(Customer customer) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("updateCustomer(Customer customer) - CustomerServiceImpl - OrderViewService");
-		customerRepository.save(customer);
 	}
 			
 	@Override
 	public void deleteCustomer(String id) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("deleteCustomer(String id) - CustomerServiceImpl - OrderViewService");
-		Customer customer = findCustomer(id);
-		customerRepository.delete(customer);
 	}
 			
 	@Override

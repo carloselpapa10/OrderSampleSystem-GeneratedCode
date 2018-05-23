@@ -30,14 +30,14 @@ public class OrderServiceImpl implements OrderService{
 	public Order createOrder(Order order) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("createOrder(Order order) - OrderServiceImpl - OrderViewService");
-		return orderRepository.save(order);
+		return order;
 	}
 				
 	@Override
 	public Order findOrder(String id) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("findOrder(String id) - OrderServiceImpl - OrderViewService");
-		return orderRepository.findOne(id);
+		return null;
 	}
 			
 	@Override
@@ -50,44 +50,36 @@ public class OrderServiceImpl implements OrderService{
 	public void rejectOrder(String id) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("rejectOrder(String id) - OrderServiceImpl - OrderViewService");
-		Order order = findOrder(id);
-		orderRepository.delete(order);
 	}
 			
 	@Override
 	public void completeOrder(Order order) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("completeOrder(Order order) - OrderServiceImpl - OrderViewService");
-		order.setCompleted(true);
-		orderRepository.save(order);
 	}
 			
 	@Override
 	public void editOrder(Order order) throws BusinessException{
 		// TODO Auto-generated method stub
 		log.info("editOrder(Order order) - OrderServiceImpl - OrderViewService");
-		orderRepository.save(order);
+	}
+			
+	@Override
+	public void deleteOrder(String id) throws BusinessException{
+		// TODO Auto-generated method stub
+		log.info("deleteOrder(String id) - OrderServiceImpl - OrderViewService");
+	}
+			
+	@Override
+	public void updateInvoiceOrder(Order order) throws BusinessException{
+		// TODO Auto-generated method stub
+		log.info("updateInvoiceOrder(Order order) - OrderServiceImpl - OrderViewService");
 	}
 			
 	@Override
 	public List<Order> findAll() throws BusinessException{
 		log.info("findAll() - OrderServiceImpl - OrderViewService");
 		return orderRepository.findAll();
-	}
-
-	@Override
-	public void updateInvoiceOrder(Order order, Invoice invoice) throws BusinessException {
-		// TODO Auto-generated method stub
-		log.info("findAll() - updateInvoiceOrder - OrderViewService");
-		order.setInvoice(invoice);
-		orderRepository.save(order);
-	}
-
-	@Override
-	public void deleteOrder(Order order) throws BusinessException {
-		// TODO Auto-generated method stub
-		log.info("deleteOrder() - updateInvoiceOrder - OrderViewService");
-		orderRepository.delete(order);
 	}
 
 }

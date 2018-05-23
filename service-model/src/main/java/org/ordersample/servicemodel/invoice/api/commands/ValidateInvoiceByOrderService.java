@@ -1,10 +1,8 @@
 package org.ordersample.servicemodel.invoice.api.commands;
 
 import java.util.List;
-
-import org.ordersample.servicemodel.invoice.api.info.InvoiceInfo;
-
 import io.eventuate.tram.commands.common.Command;
+import org.ordersample.servicemodel.invoice.api.info.*;
 
 public class ValidateInvoiceByOrderService implements Command{
 
@@ -24,5 +22,5 @@ public class ValidateInvoiceByOrderService implements Command{
 	public void setInvoiceInfo(InvoiceInfo invoiceInfo) {
 		this.invoiceInfo = invoiceInfo;
 	}
-	
+
 }

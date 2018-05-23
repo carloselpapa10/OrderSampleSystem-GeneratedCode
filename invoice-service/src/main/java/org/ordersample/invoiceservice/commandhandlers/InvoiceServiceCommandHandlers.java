@@ -37,40 +37,24 @@ public class InvoiceServiceCommandHandlers {
 		log.info("handleRequestInvoiceCommand() - InvoiceServiceCommandHandlers - InvoiceService");
 		
 		RequestInvoiceCommand command = cm.getCommand();
-		
-		try {
-			Invoice invoice = invoiceServiceImpl.createInvoice(new Invoice(command.getInvoiceInfo().getOrderid(), command.getInvoiceInfo().getInvoicecomment()));
-			return withSuccess(new InvoiceInfo(invoice.getId(), invoice.getOrderId(), invoice.getInvoiceComment()));
-		}catch (Exception e) {
-			return withFailure();
-		}
-		
+		/*TODO*/
+		return withSuccess(new InvoiceInfo());
 	}
 
 	private Message handleCompensateInvoiceCommand(CommandMessage<CompensateInvoiceCommand> cm) {
 		log.info("handleCompensateInvoiceCommand() - InvoiceServiceCommandHandlers - InvoiceService");
 		
 		CompensateInvoiceCommand command = cm.getCommand();
-		
-		try {
-			invoiceServiceImpl.rejectInvoice(new Invoice(command.getInvoiceInfo().getOrderid(), command.getInvoiceInfo().getInvoicecomment()));			
-			return withSuccess();			
-		}catch (Exception e) {
-			return withFailure();
-		}
-		
+		/*TODO*/
+		return withSuccess();
 	}
 
 	private Message handleValidateInvoiceByOrderService(CommandMessage<ValidateInvoiceByOrderService> cm) {
 		log.info("handleValidateInvoiceByOrderService() - InvoiceServiceCommandHandlers - InvoiceService");
 		
 		ValidateInvoiceByOrderService command = cm.getCommand();
-		
-		if(invoiceServiceImpl.findInvoice(command.getInvoiceInfo().getInvoiceId()) != null) {
-			return withSuccess();
-		}
-		
-		return withFailure();
+		/*TODO*/
+		return withSuccess();
 	}
 
 }

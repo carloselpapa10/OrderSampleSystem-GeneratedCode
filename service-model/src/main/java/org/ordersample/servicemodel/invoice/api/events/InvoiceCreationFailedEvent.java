@@ -1,12 +1,12 @@
 package org.ordersample.servicemodel.invoice.api.events;
 
-import org.ordersample.servicemodel.invoice.api.info.InvoiceInfo;
+import org.ordersample.servicemodel.invoice.api.info.*;
 
 public class InvoiceCreationFailedEvent implements InvoiceDomainEvent{
-
-	private InvoiceInfo invoiceInfo; 
 	
-	public InvoiceCreationFailedEvent() {}	
+	private InvoiceInfo invoiceInfo;
+
+	public InvoiceCreationFailedEvent() {}
 
 	public InvoiceCreationFailedEvent(InvoiceInfo invoiceInfo) {
 		super();
@@ -20,5 +20,5 @@ public class InvoiceCreationFailedEvent implements InvoiceDomainEvent{
 	public void setInvoiceInfo(InvoiceInfo invoiceInfo) {
 		this.invoiceInfo = invoiceInfo;
 	}
-	
+
 }

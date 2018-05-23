@@ -5,41 +5,31 @@ import java.util.List;
 
 public class InvoiceInfo {
 
-	private String invoiceId; 
+    private String id;									
     private String orderid;									
-    private String invoicecomment;
-    
+    private String invoicecomment;									
+
 	public InvoiceInfo(){}
 
-	public InvoiceInfo(String invoiceId, String orderid, String invoicecomment) {
-		super();
-		this.invoiceId = invoiceId;
+	public void setId(String id){
+		this.id = id;
+	}	
+
+	public String getId() {
+		return id;
+	}
+	public void setOrderId(String orderid){
 		this.orderid = orderid;
-		this.invoicecomment = invoicecomment;
-	}
+	}	
 
-	public String getInvoiceId() {
-		return invoiceId;
-	}
-
-	public void setInvoiceId(String invoiceId) {
-		this.invoiceId = invoiceId;
-	}
-
-	public String getOrderid() {
+	public String getOrderId() {
 		return orderid;
 	}
+	public void setInvoiceComment(String invoicecomment){
+		this.invoicecomment = invoicecomment;
+	}	
 
-	public void setOrderid(String orderid) {
-		this.orderid = orderid;
-	}
-
-	public String getInvoicecomment() {
+	public String getInvoiceComment() {
 		return invoicecomment;
 	}
-
-	public void setInvoicecomment(String invoicecomment) {
-		this.invoicecomment = invoicecomment;
-	}
-	
 }			

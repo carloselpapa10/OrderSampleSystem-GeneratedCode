@@ -1,11 +1,11 @@
 package org.ordersample.servicemodel.order.api.events;
 
-import org.ordersample.servicemodel.order.api.info.OrderInfo;
+import org.ordersample.servicemodel.order.api.info.*;
 
 public class OrderCompletedEvent implements OrderDomainEvent{
-
-	private OrderInfo orderInfo;
 	
+	private OrderInfo orderInfo;
+
 	public OrderCompletedEvent() {}
 
 	public OrderCompletedEvent(OrderInfo orderInfo) {
@@ -20,5 +20,5 @@ public class OrderCompletedEvent implements OrderDomainEvent{
 	public void setOrderInfo(OrderInfo orderInfo) {
 		this.orderInfo = orderInfo;
 	}
-	
+
 }

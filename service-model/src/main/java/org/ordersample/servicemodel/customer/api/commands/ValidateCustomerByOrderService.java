@@ -1,10 +1,8 @@
 package org.ordersample.servicemodel.customer.api.commands;
 
 import java.util.List;
-
-import org.ordersample.servicemodel.customer.api.info.CustomerInfo;
-
 import io.eventuate.tram.commands.common.Command;
+import org.ordersample.servicemodel.customer.api.info.*;
 
 public class ValidateCustomerByOrderService implements Command{
 
@@ -24,5 +22,5 @@ public class ValidateCustomerByOrderService implements Command{
 	public void setCustomerInfo(CustomerInfo customerInfo) {
 		this.customerInfo = customerInfo;
 	}
-	
+
 }

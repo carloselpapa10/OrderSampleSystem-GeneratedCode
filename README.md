@@ -1,4 +1,4 @@
-# OrderSample Application
+# OrderSample Generated Code by Acceleo
 ### Installation
 
 ### Prerequisites

@@ -15,23 +15,9 @@ public class Order{
 	private String id; 
     private String description;									
     private String customerid;									
-    private String invoiceid;
-    private boolean completed;
+    private String invoiceid;									
 				
 	public Order() {}
-	
-	public Order(String description, String customerid) {
-		super();
-		this.description = description;
-		this.customerid = customerid;
-	}
-
-	public Order(String description, String customerid, String invoiceid) {
-		super();
-		this.description = description;
-		this.customerid = customerid;
-		this.invoiceid = invoiceid;
-	}
 
 	public void setId(String id) {
 		this.id = id;
@@ -60,14 +46,6 @@ public class Order{
 
 	public String getInvoiceId() {
 		return invoiceid;
-	}
-
-	public boolean isCompleted() {
-		return completed;
-	}
-
-	public void setCompleted(boolean completed) {
-		this.completed = completed;
 	}
 
 }

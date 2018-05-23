@@ -22,28 +22,23 @@ public class CustomerServiceController {
 	public CreateCustomerResponse createCustomer(@RequestBody CreateCustomerRequest createCustomerRequest){
 		log.info("createCustomer(@RequestBody CreateCustomerRequest createCustomerRequest) - CustomerServiceController - CustomerService");
 		
-		if(customerServiceImpl.findCustomer(createCustomerRequest.getId()) == null) {
-			Customer customer = customerServiceImpl.createCustomer(new Customer(createCustomerRequest.getId(), createCustomerRequest.getName()));
-			return new CreateCustomerResponse(customer.getId());
-		}
-		
-		return null;
+		/*TODO*/
+		return new CreateCustomerResponse();
 	}
 			
 	@GetMapping("/retrieve/{customerId}")
 	public Customer findCustomer(@RequestParam String id){
-		log.info("findCustomer(String id) - CustomerServiceController - CustomerService");		
-		return customerServiceImpl.findCustomer(id);
+		log.info("findCustomer(String id) - CustomerServiceController - CustomerService");
+		
+		/*TODO*/
+		return null;
 	} 			
 
 	@PutMapping("/update/customer")
 	public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customer){
 		log.info("updateCustomer(@RequestBody Customer customer) - CustomerServiceController - CustomerService");
 
-		if(customerServiceImpl.findCustomer(customer.getId()) != null) {
-			customerServiceImpl.updateCustomer(customer);
-			return ResponseEntity.ok(customer);
-		}		
+		/*TODO*/
 		return null;
 	}
  			
@@ -51,12 +46,8 @@ public class CustomerServiceController {
 	public String deleteCustomer(@RequestParam String id){
 		log.info("deleteCustomer(String id) - CustomerServiceController - CustomerService");
 
-		Customer customer = customerServiceImpl.findCustomer(id);
-		if(customer != null) {
-			customerServiceImpl.deleteCustomer(customer);
-			return "Customer is being deleted...";
-		}
-		return "Id customer does not exist!";		
+		/*TODO*/
+		return null;
 	} 
 			
 	@GetMapping("/retrieve/Customers")

@@ -11,12 +11,6 @@ public class Customer{
     private String name;									
 
 	public Customer() {}
-	
-	public Customer(String id, String name) {
-		super();
-		this.id = id;
-		this.name = name;
-	}
 
 	public void setId(String id) {
 		this.id = id;

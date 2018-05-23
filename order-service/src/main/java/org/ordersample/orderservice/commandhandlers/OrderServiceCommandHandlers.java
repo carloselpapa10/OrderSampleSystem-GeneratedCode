@@ -37,46 +37,24 @@ public class OrderServiceCommandHandlers {
 		log.info("handleCompleteOrderCommand() - OrderServiceCommandHandlers - OrderService");
 		
 		CompleteOrderCommand command = cm.getCommand();
-		Order order = orderServiceImpl.findOrder(command.getOrderInfo().getId());
-		
-		if(order != null) {
-			orderServiceImpl.completeOrder(order);
-			return withSuccess();
-		}
-		
-		return withFailure();		
+		/*TODO*/
+		return withSuccess();
 	}
 
 	private Message handleRejectOrderCommand(CommandMessage<RejectOrderCommand> cm) {
 		log.info("handleRejectOrderCommand() - OrderServiceCommandHandlers - OrderService");
 		
 		RejectOrderCommand command = cm.getCommand();
-		Order order = orderServiceImpl.findOrder(command.getOrderInfo().getId());
-		
-		if(order != null) {
-			orderServiceImpl.rejectOrder(order);
-			return withSuccess();
-		}
-		
-		return withFailure();
+		/*TODO*/
+		return withSuccess();
 	}
 
 	private Message handleEditOrderCommand(CommandMessage<EditOrderCommand> cm) {
 		log.info("handleEditOrderCommand() - OrderServiceCommandHandlers - OrderService");
 		
 		EditOrderCommand command = cm.getCommand();
-		Order order = orderServiceImpl.findOrder(command.getOrderInfo().getId());
-		
-		if(order != null) {
-			order.setDescription(command.getOrderInfo().getDescription());
-			order.setCustomerId(command.getOrderInfo().getCustomerid());
-			order.setInvoiceId(command.getOrderInfo().getInvoiceid());
-			
-			orderServiceImpl.editOrder(order);
-			return withSuccess();
-		}
-		
-		return withFailure();
+		/*TODO*/
+		return withSuccess();
 	}
 
 }

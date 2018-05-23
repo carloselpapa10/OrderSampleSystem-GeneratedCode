@@ -1,12 +1,13 @@
 package org.ordersample.orderservice.saga.updateorder;
 
+import org.ordersample.orderservice.impl.*;
 import org.ordersample.orderservice.proxy.*;
-import org.ordersample.servicemodel.customer.api.commands.*;	
-import org.ordersample.servicemodel.customer.api.info.*;
-import org.ordersample.servicemodel.order.api.commands.*;	
-import org.ordersample.servicemodel.order.api.info.*;
 import org.ordersample.servicemodel.invoice.api.commands.*;	
 import org.ordersample.servicemodel.invoice.api.info.*;
+import org.ordersample.servicemodel.order.api.commands.*;	
+import org.ordersample.servicemodel.order.api.info.*;
+import org.ordersample.servicemodel.customer.api.commands.*;	
+import org.ordersample.servicemodel.customer.api.info.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
@@ -20,7 +21,7 @@ public class UpdateOrderSaga implements SimpleSaga<UpdateOrderSagaData>{
 
 	private SagaDefinition<UpdateOrderSagaData> sagaDefinition;
 	
-	public UpdateOrderSaga(CustomerServiceProxy customerService, OrderServiceProxy orderService, InvoiceServiceProxy invoiceService){
+	public UpdateOrderSaga(InvoiceServiceProxy invoiceService, OrderServiceProxy orderService, CustomerServiceProxy customerService){
 		
 		this.sagaDefinition =
 				step()					
@@ -39,17 +40,17 @@ public class UpdateOrderSaga implements SimpleSaga<UpdateOrderSagaData>{
 
 	private ValidateCustomerByOrderService makeValidateCustomerByOrderService(UpdateOrderSagaData data) {
 		log.info("makeValidateCustomerByOrderService() - UpdateOrderSaga - OrderService"); 
-		return new ValidateCustomerByOrderService(new CustomerInfo(data.getCustomerid()));
+		return new ValidateCustomerByOrderService();
 	}
 
 	private ValidateInvoiceByOrderService makeValidateInvoiceByOrderService(UpdateOrderSagaData data) {
 		log.info("makeValidateInvoiceByOrderService() - UpdateOrderSaga - OrderService"); 
-		return new ValidateInvoiceByOrderService(new InvoiceInfo(data.getInvoiceid(), data.getId(), ""));
+		return new ValidateInvoiceByOrderService();
 	}
 
 	private EditOrderCommand makeEditOrderCommand(UpdateOrderSagaData data) {
 		log.info("makeEditOrderCommand() - UpdateOrderSaga - OrderService"); 
-		return new EditOrderCommand(new OrderInfo(data.getId(), data.getDescription(), data.getCustomerid(), data.getInvoiceid()));
+		return new EditOrderCommand();
 	}
 
 }
